@@ -1,0 +1,340 @@
+@import url(webfont-ubuntu-400-300-100.css);
+@import url(webfont-ubuntu-mono-400-700-400italic.css);
+
+body {
+  font-family: 'Ubuntu';
+  font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu';
+  font-weight: 300;
+  margin-top: 0;
+}
+h1 {
+  margin-top: 0.1em;
+}
+h2 {
+  font-size: 140%;
+  line-height: 150%;
+}
+h3 {
+  font-size: 120%;
+  line-height: 140%;
+}
+h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+
+li {
+  font-size: 110%;
+  line-height: 160%;
+}
+
+p {
+font-size: 120%;
+  line-height: 140%;
+}
+
+.singleimg .middlebelowheader {
+  text-align: center;
+}
+
+.singleimg img {
+  max-width: 90%;
+  max-height: 600px;
+  /*border: 2px solid #ddd;*/
+}
+table {
+  margin: 0 auto 0.8em;
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid #ddd;
+  padding: 0.3em 0.5em;
+}
+
+.bgheader h1 {
+  background-color: rgba(0, 0, 0, 0.9);
+  opacity: 50%;
+  padding: 0.5em;
+  color: white;
+  border-radius: .5em;
+}
+.middlebelowheader {
+  /* This fixed size height was found to work well with the slide
+     scaling mechanism of remark.js:
+   */
+  height: 500px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.widespace h2 {
+  line-height: 200%;
+}
+.big .remark-code  {
+  font-size: 200%;
+}
+.remark-code, .remark-inline-code {
+   font-family: 'Ubuntu Mono';
+}
+
+.medium .remark-code  {
+  font-size: 120%;
+}
+
+.mmedium .remark-code  {
+  font-size: 99%;
+}
+
+.affiliations img {
+  height: 44px;
+  margin: 2em;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.big110 {
+  font-size: 110%;
+}
+
+.big120 {
+  font-size: 120%;
+}
+
+.big130 {
+  font-size: 130%;
+}
+
+.big140 {
+  font-size: 140%;
+}
+
+.big150 {
+  font-size: 150%;
+}
+
+.small {
+  font-size: 90%;
+}
+
+.small90 {
+  font-size: 90%;
+}
+
+.small80 {
+  font-size: 80%;
+}
+
+.small85 {
+  font-size: 85%;
+}
+
+.small75 {
+  font-size: 75%;
+}
+
+.small70 {
+  font-size: 70%;
+}
+
+.small65 {
+  font-size: 65%;
+}
+
+.small60 {
+  font-size: 60%;
+}
+
+.small55 {
+  font-size: 55%;
+}
+
+.small50 {
+  font-size: 50%;
+}
+
+.small40 {
+  font-size: 40%;
+}
+
+.credits {
+  font-style: italic;
+  font-size: 70%;
+}
+
+.bunchoflogos img {
+  max-height: 100px;
+  padding: 1em;
+}
+
+.bunchoflogos p {
+  text-align: center;
+  width: 750px;
+}
+
+a:visited {
+  color: blue;
+}
+
+.left-column10 {
+  width: 10%;
+  float: left;
+}
+
+.left-column20 {
+  width: 20%;
+  float: left;
+}
+.left-column30 {
+  width: 30%;
+  float: left;
+}
+
+.left-column40 {
+  width: 40%;
+  float: left;
+}
+
+.left-column50 {
+  width: 50%;
+  float: left;
+}
+
+.left-column60 {
+  width: 60%;
+  float: left;
+}
+
+.left-column70 {
+  width: 70%;
+  float: left;
+}
+
+.left-column75 {
+  width: 75%;
+  float: left;
+}
+
+.left-column80 {
+  width: 80%;
+  float: left;
+}
+
+.left-column85 {
+  width: 85%;
+  float: left;
+}
+
+.left-column90 {
+  width: 90%;
+  float: left;
+}
+
+.left-column100 {
+  width: 100%;
+  float: left;
+}
+
+.right-column10 {
+  width: 10%;
+  float: right;
+}
+
+.right-column15 {
+  width: 15%;
+  float: right;
+}
+
+.right-column20 {
+  width: 20%;
+  float: right;
+}
+
+.right-column25 {
+  width: 25%;
+  float: right;
+}
+
+.right-column30 {
+  width: 30%;
+  float: right;
+}
+
+.right-column40 {
+  width: 40%;
+  float: right;
+}
+
+.right-column50 {
+  width: 50%;
+  float: right;
+}
+
+.right-column60 {
+  width: 60%;
+  float: right;
+}
+.right-column70 {
+  width: 70%;
+  float: right;
+}
+
+.right-column80 {
+  width: 80%;
+  float: right;
+}
+
+.right-column90 {
+  width: 90%;
+  float: right;
+}
+
+.right-column100 {
+  width: 100%;
+  float: right;
+}
+
+.above-part {
+  height: 30%;
+}
+
+.whole_width_image {
+  margin-left: -10%;
+  margin-right: -100%;
+}
+
+.whole_left_half {
+  margin-top: -3%;
+  margin-left: -10%;
+  float: left;
+  width: 60%;
+}
+
+.whole_right_half {
+  margin-top: -3%;
+  margin-right: 0 %;
+  float: right;
+  width: 50%;
+}
+
+.firebrick {
+  color: firebrick;
+}
+
+.crimson {
+  color: crimson;
+}
+
+.ghostwhite {
+  color: ghostwhite;
+}
+
+
+
+
+
+
