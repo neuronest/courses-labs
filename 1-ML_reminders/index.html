@@ -332,8 +332,12 @@ $ = (\mathbb{E}[\hat{\mathbf{\theta}}\_{train}] - \mathbf{\theta})^2 + Var(\hat{
 
 # Logistic Regression
 
-- One the one hand Logistic Regression is not linear as when Log Reg probability is high/low,
-it needs a bigger increment on $x$ to make it higher/lower compared to when it is closer to $0.5$
+- One the one hand, Logistic Regression is not linear
+
+- When $\sigma(\theta^{T} x)$ is close to $0.5$, so $\theta^{T} x$ close to $0$,
+a small increment on $x$ leads to a significant change in probability
+- When $\sigma(\theta^T x)$ is already high or low, a much bigger increment on $x$
+is needed   to get the same amount of change in probability
 
 - Useful as it relates to real world phenomena:<br/>
 $\rightarrow$ physical performance with respect to training increments<br/>
