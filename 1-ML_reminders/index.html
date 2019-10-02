@@ -183,32 +183,59 @@ Recommended reading: [deeplearningbook.org](http://www.deeplearningbook.org/)
 
 ---
 
-# Linear Regression
+# Linear Regression as Maximum Likelihood
 
-- Suppose we have a target $y \in \mathbb{R}$ and a feature sample $\mathbf{x} \in \mathbb{R}^p$, suspiciously linearly dependant
+- Let $\mathcal{D} = ${$ (\mathbf{x}_1, y_1), \dotsc, (\mathbf{x}_n, y_n)$} be a training set of i.i.d variables<br/>with: $\mathbf{x}_i \in \mathbb{R}^p$ a feature sample and $y_i \in \mathbb{R}$ a target<br/><br/>
 
-- Now let $\mathbf{\theta} \in \mathbb{R}^p$ our parameters vector and $\sigma^2 > 0$ the variance fixed to some constant, then we can make the following assumption:
+- Our goal, in order to predict $Y$ given $\mathbf{X}$, is to estimate a conditional probability $P(Y | \mathbf{X} ; \mathbf{\theta})$
 
-.center[
-$p(y | \mathbf{x} ; \mathbf{\theta}, \sigma) = \mathcal{N}(y ; \mathbf{\theta}^\top \mathbf{x}, \sigma^2) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp{(-\frac{(y - \langle {\mathbf{x}, \mathbf{\theta}} \rangle) ^2}{2 \sigma^2})}$
-]
+- Then, the conditional maximum likelihood estimator is:
+.center[$\hat{\mathbf{\theta}}_{ML} = \underset{\mathbf{\theta}}{\operatorname{argmax}} P(Y | \mathbf{X} ; \mathbf{\theta})$]
 
 ---
 
-# Linear Regression
+# Linear Regression as Maximum Likelihood
 
-- Let $\mathcal{D} = ${$ (\mathbf{x}_1, y_1), \dotsc, (\mathbf{x}_n, y_n)$} be a training set of i.i.d variables<br/><br/>
-- We have: $p(y_1, \dotsc, y_n | \mathbf{x}_1, \dotsc, \mathbf{x}_n ; \mathbf{\theta})  = \prod_1^n p(y_i | \mathbf{x}_i ; \mathbf{\theta})$
+- Our linear model is assumed to take the following form:
+.center[$y_i = \mathbf{\theta}^\top \mathbf{x}_i + \sigma \epsilon_i$]
+.center[(we have volontary omitted the bias term here for simplicity)]
+
+- $\sigma \epsilon_i$ is the inherent noise in our data, unhandlable by our linear model, with some variance $\epsilon_i$
+
+- We are going to make the asumption that the noise is gaussian and is normally distributed with mean 0:
+.center[$p(\epsilon_i) = \mathcal{N}(0, 1)$]
+
+- That implies:
+.center[$p(y_i | \mathbf{x}_i ; \mathbf{\theta}, \sigma) = \mathcal{N}(y_i ; \mathbf{\theta}^\top \mathbf{x}_i, \sigma^2) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp{(-\frac{(y_i - \langle {\mathbf{x_i}, \mathbf{\theta}} \rangle) ^2}{2 \sigma^2})}$]
+
+---
+
+# Linear Regression as Maximum Likelihood
+
+- In addition, we have: $p(y_1, \dotsc, y_n | \mathbf{x}_1, \dotsc, \mathbf{x}_n ; \mathbf{\theta}, \sigma)  = \prod_1^n p(y_i | \mathbf{x}_i ; \mathbf{\theta}, \sigma)$
+
 - Maximize this conditional distribution is equivalent to minimizing the following negative log-likelihood:
 
-.center[$- \sum_1^n \log p(y_i | \mathbf{x}_i ; \mathbf{\theta}, \sigma) = - \sum_1^n \log \mathcal{N}(y_i ; \mathbf{\theta}^\top \mathbf{x}_i, \sigma^2)$<br/>$
-= n \log \sigma + \frac{n}{2} \log(2 \pi) + \frac{1}{2} \sum_1^n \frac{(y_i - \langle {\mathbf{x}_i, \mathbf{\theta}} \rangle) ^2}{\sigma^2}$]<br/><br/>
-- It naturally leads to the MSE minimization with respect to $\mathbf{\theta}$:
-.center[find $\hat{\mathbf{\theta}} = \underset{\mathbf{\theta}}{\operatorname{argmin}} \frac{1}{2n} \sum_1^n (y_i - \langle {\mathbf{x}_i, \mathbf{\theta}} \rangle) ^2$]
+$$
+\begin{equation}
+\- \sum_1^n \log p(y_i | \mathbf{x}_i ; \mathbf{\theta}, \sigma) \\\\
+= - \sum_1^n \log \mathcal{N}(y_i ; \mathbf{\theta}^\top \mathbf{x}_i, \sigma^2) \\\\
+= n \log \sigma + \frac{n}{2} \log(2 \pi) + \frac{1}{2} \sum_1^n \frac{(y_i - \langle {\mathbf{x}_i, \mathbf{\theta}} \rangle) ^2}{\sigma^2}
+\end{equation}
+$$
 
 ---
 
-# Linear Regression
+# Linear Regression as Maximum Likelihood
+
+- It naturally leads to the MSE minimization with respect to $\mathbf{\theta}$:
+.center[$\hat{\mathbf{\theta}} = \underset{\mathbf{\theta}}{\operatorname{argmin}} \frac{1}{2n} \sum_1^n (y_i - \langle {\mathbf{x}_i, \mathbf{\theta}} \rangle) ^2$]
+
+- Hence, it turns out that the maximum likelihood estimate for our linear model is the hyperplan which minimizes the sum of squared errors
+
+---
+
+# Linear Regression: closed form
 
 Compact and closed forms:
 
@@ -283,6 +310,8 @@ $MSE\_{train} = \mathbb{E}[(\hat{\mathbf{\theta}}\_{train} - \mathbf{\theta})^2]
 $ = (\mathbb{E}[\hat{\mathbf{\theta}}\_{train}] - \mathbf{\theta})^2 + Var(\hat{\mathbf{\theta}}\_{train})$
 ]
 
+- The bias measures the expected deviation from the true value of the parameter
+- The variance provides a measure of the deviation from the expected estimator value that any particular sampling of the data is likely to cause
 .center[<img src="images/bias_variance_tradeoff.jpg" style="width: 600px;" /> ]
 
 ---
@@ -337,7 +366,7 @@ $ = (\mathbb{E}[\hat{\mathbf{\theta}}\_{train}] - \mathbf{\theta})^2 + Var(\hat{
 - When $\sigma(\theta^{T} x)$ is close to $0.5$, so $\theta^{T} x$ close to $0$,
 a small increment on $x$ leads to a significant change in probability
 - When $\sigma(\theta^T x)$ is already high or low, a much bigger increment on $x$
-is needed   to get the same amount of change in probability
+is needed to get the same amount of change in probability
 
 - Useful as it relates to real world phenomena:<br/>
 $\rightarrow$ physical performance with respect to training increments<br/>
