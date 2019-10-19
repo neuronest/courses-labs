@@ -10,6 +10,9 @@ Courses and labs will be added and updated in weeks, please be sure to pull freq
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Deep-Learning-courses/courses_labs/gh-pages)
 
+**Python version: 3.7.3** </br>
+**Pip version: 19.1.1**
+
 Please be sure your Python packages are up to date by running the following command:
 ```    
 pip install -Ur requirements.txt
