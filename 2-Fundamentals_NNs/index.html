@@ -335,9 +335,10 @@ $\gamma \Omega(\mathbf{\Theta}) = \gamma (||W^h||^2 + ||W^o||^2)$ is an example 
 
 # Binary classification network
 
-- We have:</br>
+- We have for target:</br>
   - $Y \in [0, 1]^n$, with $n$ the number of examples
-  - $Y|(X=\mathbf{x}) \sim Bernoulli(b=f(\mathbf{x} ; \mathbf{\Theta}))$,</br> with $f$ the function constructed by our neural network
+- Our assumption about the underlying distribution:
+  - $Y|(X=\mathbf{x}) \sim Bernoulli(b=f(\mathbf{x} ; \mathbf{\Theta}))$,</br> with $f$ the function constructed by our neural network, trained to estimate $p$
 
 - A **sigmoid** output activation function is usually used to output a probability
 
@@ -347,9 +348,14 @@ $\gamma \Omega(\mathbf{\Theta}) = \gamma (||W^h||^2 + ||W^o||^2)$ is an example 
 
 # Multiclass classification network
 
-- We have:</br>
+- We have for target:</br>
   - $Y \in [0, K-1]^n$, with $n$ the number of examples
-  - $Y|(X=\mathbf{x}) \sim Multinoulli(\mathbf{p}=\mathbf{f}(\mathbf{x} ; \Theta))$,</br> with $\mathbf{f}$ the function constructed by our neural network
+- Our assumption about the underlying distribution:
+  - $Y|(X=\mathbf{x}) \sim Multinoulli(\mathbf{p}=f(\mathbf{x} ; \Theta))$,</br> with $f$ the function constructed by our neural network, trained to estimate $\mathbf{p}$
+
+.small90[
+- The $Multinoulli$ distribution is a generalization of the $Bernoulli$ distribution, with a vector $\mathbf{p} \in [0, 1]^K$ as parameter and $\sum\_{i=1}^{K} \mathbf{p}_i = 1$
+]
 
 - A **softmax** output activation function is usually used to output a probabilities distribution
 
@@ -359,9 +365,10 @@ $\gamma \Omega(\mathbf{\Theta}) = \gamma (||W^h||^2 + ||W^o||^2)$ is an example 
 
 # Regression network
 
-- We have:</br>
+- We have for target:</br>
   - $Y \in \mathbb{R}^n$, with $n$ the number of examples
-  - $Y|(X=\mathbf{x}) \sim \mathcal{N}(\mathbf{\mu}=\mathbf{f}(\mathbf{x} ; \Theta), \sigma^2 \mathbf{I})$,</br> with $\mathbf{f}$ the function constructed by our neural network
+- Our assumption about the underlying distribution:
+  - $Y|(X=\mathbf{x}) \sim \mathcal{N}(\mathbf{\mu}=f(\mathbf{x} ; \Theta), \sigma^2 \mathbf{I})$,</br> with $f$ the function constructed by our neural network, trained to estimate $\mu$
 
 - Usually we use an **identity** or a **ReLU** activation output function
 
