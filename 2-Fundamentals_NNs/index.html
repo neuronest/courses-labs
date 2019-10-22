@@ -338,7 +338,7 @@ $\gamma \Omega(\mathbf{\Theta}) = \gamma (||W^h||^2 + ||W^o||^2)$ is an example 
 - We have for target:</br>
   - $Y \in [0, 1]^n$, with $n$ the number of examples
 - Our assumption about the underlying distribution:
-  - $Y|(X=\mathbf{x}) \sim Bernoulli(b=f(\mathbf{x} ; \mathbf{\Theta}))$,</br> with $f$ the function constructed by our neural network, trained to estimate $p$
+  - $Y|(X=\mathbf{x}) \sim Bernoulli(b=f(\mathbf{x} ; \mathbf{\Theta}))$,</br> with $f$ the function constructed by our neural network, trained to estimate $b$
 
 - A **sigmoid** output activation function is usually used to output a probability
 
@@ -390,7 +390,7 @@ $\gamma \Omega(\mathbf{\Theta}) = \gamma (||W^h||^2 + ||W^o||^2)$ is an example 
 
 --
 .big110[
-- Doing so, we improve the computation cost from $o(n)$ to $o(b)$, n and b being respectively the number of samples in the full dataset and in a minibatch
+- Doing so, we improve the computation cost from $o(n)$ to $o(m)$, n and m being respectively the number of samples in the full dataset and in a minibatch
 ]
 
 ---
@@ -525,7 +525,7 @@ Back-propagation refers to the method for **computing** the gradient
 
 Another algorithm, such as stochastic gradient descent, makes use of it to compute gradients and perform learning
 
-We are going to see how it works through 2 examples:
+We are going to see how it works through two examples:
 - A simple toy example
 - A real life NN-involving example
 ---
@@ -547,9 +547,9 @@ $\frac{\partial e}{\partial b} = \sum\_{j \in \(c, d\)} \frac{\partial e}{\parti
 A real life NN-involving example:
 .center[<img src="images/flow_graph_b.svg" style="width: 600px;" />]
 
-Here the loss is the negative loglikelihood.<br/>
-$f\_\theta(\mathbf{x}) = P(y|\mathbf{x}) $ modeled by your model<br/>
-.left-column50[
+.left-column60[
+$f\_\theta(\mathbf{x}) = P(y|\mathbf{x}) $ modeled by your model
+
 $
 f(\mathbf{x}) =
 \begin{bmatrix}
@@ -561,10 +561,17 @@ f(\mathbf{x}) =
 = softmax(z^o(x))
 $
 ]
-.right-column50[
-- For a given sample with true $y = k$<br>
-$loss = -\log(P\_\theta(y=k|\mathbf{x}))$<br>
-$loss = -\log(f(\mathbf{x})\_k) $
+
+.right-column30[
+Here the loss is the negative loglikelihood
+
+So, for a given sample with $y\_{true} = k$, we have $l(f(x), y ; \theta)$:
+$$
+\begin{equation}
+= -\log(P\_\theta(y=k|\mathbf{x})) \\\\
+= -\log(f(\mathbf{x})\_k)
+\end{equation}
+$$
 ]
 ---
 
