@@ -681,10 +681,12 @@ but leads to small standard deviation and suppresses the effect of wanted outlie
 - Constant value depends on the problem and is heuristically chosen
 
 
-- Better initializations exist, such as Xavier Glorot
+Better initializations exist, such as Xavier Glorot
 
   - Aims at preserving the same units variance through the network
+
   - Helps in preventing exploding or vanishing values
+
   - $w\_i \sim \mathcal{N}(0, \frac{1}{N\_{in}})$ where $w\_i$ is used between two layers
    and $N\_{in}$ is the number of input neurons
 ---
@@ -695,7 +697,7 @@ but leads to small standard deviation and suppresses the effect of wanted outlie
 
 - The optimization issue is due to the gradient that is used
 
-- The gradient (the derivatives) tell us how to update each parameter, under the assumpation that the others, and thus
+- The gradient (the derivatives) tell us how to update each parameter, under the assumption that the other parameters, and thus
 the other layers, will remain the same
 
 - In practice all parameters are updated at the same time, leading to unexpected results
@@ -710,7 +712,7 @@ the other layers, will remain the same
 
 # Batch Normalization
 
-- Removes gradient updates that would only lead to units standard deviation or mean increases. This kind of action
+- Removes gradient updates that would only lead to increases of standard deviation or mean in the unit. This kind of action
  has been made useless due to the normalization operation
 
 - Stabilizes learning by limiting the effects of joint updating through units standardization
@@ -741,9 +743,9 @@ the other layers, will remain the same
 # Regularization
 .big120[Dropout at **training** time]
 
-- Removes neuron influence by setting its activation to $0$ with probability $p$
+- Keep normal activation with probability $p$
 
-- Keep normal activation with probability $1-p$
+- Removes neuron influence by setting its activation to $0$ with probability $1 - p$
 
 - Bernoulli mask sampled for a forward pass / backward pass pair
 
