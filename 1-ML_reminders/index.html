@@ -40,7 +40,7 @@ Guillaume Ligner - Côme Arvis
 
 - Part 5: Deep Learning for Natural Language Processing 2
 
-- Part 6: Unsupervised Generative Neural Networks </br> or Deep Learning Challenge Support
+- Part 6: Unsupervised Generative Neural Networks
 
 ---
 
@@ -330,55 +330,53 @@ $ = (\mathbb{E}[\hat{\mathbf{\theta}}\_{train}] - \mathbf{\theta})^2 + Var(\hat{
 # Logistic Regression
 
 .center[<img src="images/sigmoid.png" style="width: 300px;" />]
-- Traditional model in binary classification : prediction either $0$ or $1$
+- Traditional model in **binary classification**:
 
-- $prediction =
+  - $prediction =
   \begin{cases}
     1  & \quad \text{if } P(y=1|x) \geq 0.5\\\\
     0  & \quad \text{if } P(y=1|x) < 0.5
   \end{cases}$
 
-- Logistic Regression is based on the sigmoid $\sigma(x)$
+- The logistic regression is based on the **sigmoid function**: $\sigma(x)$
 
-- $\sigma(x) : \mathbb{R} \mapsto ]0,1[$, thus used to modelize $P(y=1|x)$
+- $\sigma(x) : \mathbb{R} \mapsto ]0,1[$, thus used to modelize a probability distribution
 
 ---
 
 # Logistic Regression
 
-- $\sigma(x) = \frac{1}{1 + \exp(-x)} = \frac{\exp(x)}{1 + \exp(x)}$
+- We have: $\sigma(x) = \frac{1}{1 + \exp(-x)}$
 
-- $\sigma(x)^{\prime} = \sigma(x)(1-\sigma(x))$
-
-- In practice, $\mathbf{x}$ not described by $1$ dimension but $m$ dimensions.
+- More generally, $\mathbf{x}$ is usually a vector in $m$ dimensions
     - $P(y=1|\mathbf{x})$ modelized by $\sigma(\mathbf{\theta}^T\mathbf{x})$ $= \frac{1}{1 + \exp(-\mathbf{\theta}^T\mathbf{x})}$</br>
     with $\mathbf{x} \in \mathbb{R}^m$, the feature vector, $\mathbf{\theta} \in \mathbb{R}^m$ the parameter vector
 
-- Usually for binary classification we use the binary cross-entropy loss:
-    - $J(\mathbf{\theta}) = -\frac{1}{n}\sum_{i=1}^{n}y_i\cdot\log(\sigma(\theta^T\mathbf{x_i})) + (1-y_i)\cdot\log(1-\sigma(\theta^T\mathbf{x_i}))$
+- Usually for binary classification we use the **binary cross-entropy** loss:
+$$J(\mathbf{\theta}) = -\frac{1}{n}\sum_{i=1}^{n}y_i\cdot\log(\sigma(\theta^T\mathbf{x_i})) + (1-y_i)\cdot\log(1-\sigma(\theta^T\mathbf{x_i}))$$
 
 ---
 
 # Logistic Regression
 
-- One the one hand, Logistic Regression is not linear
+On the one hand, Logistic Regression is not linear
 
 - When $\sigma(\theta^{T} x)$ is close to $0.5$, so $\theta^{T} x$ close to $0$,
-a small increment on $x$ leads to a significant change in probability
-- When $\sigma(\theta^T x)$ is already high or low, a much bigger increment on $x$
+a **small increment** on $x$ leads to a **significant change in probability**
+
+- When $\sigma(\theta^T x)$ is already high or low, a much **bigger increment** on $x$
 is needed to get the same amount of change in probability
-
-- Useful as it relates to real world phenomena:<br/>
-$\rightarrow$ physical performance with respect to training increments<br/>
-$\rightarrow$ happiness sensation with respect to wealth increments
-
+- Useful as it relates to real world phenomena, for instance:
+  - physical performance with respect to training increments
+  - happiness sensation with respect to wealth increments
+  - ...
 ---
 
 # Logistic Regression
 
-- On the other hand, Logistic Regression is of Generalized Linear Model (GLM) type
+On the other hand, the logistic regression is of **Generalized Linear Model** (GLM) type
 
-- Sigmoid function is not linear but Logistic Regression model boundary decision function is linear.
+- The sigmoid function is not linear but the logistic regression model **boundary decision** function is **linear**:
   .center[
   $prediction =
   \begin{cases}
@@ -392,12 +390,12 @@ $\rightarrow$ happiness sensation with respect to wealth increments
   \end{cases}$
   ]
 
-- Separation between $1$s and $0$s predicted samples is the plane $\theta^T\mathbf{x} = 0$
+.center[Separation between $1$s and $0$s predicted samples is the plane $\theta^T\mathbf{x} = 0$]
 
 ---
 
 # Logistic Regression
-- In weighted sum, $\text{feature} \times w \le 0$ may be seen as an inhibitory neurotransmitter on neuron
+- In weighted sum, $\text{feature} \times \text{weight} \le 0$ may be seen as an inhibitory neurotransmitter on neuron
 
 - Output signal is $\sigma(\beta_1\cdot x_1 + \dotsc + \beta_n\cdot x_n + bias) \mapsto \left]0, 1\right[$
 
