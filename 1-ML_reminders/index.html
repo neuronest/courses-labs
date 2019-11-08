@@ -346,7 +346,7 @@ $ = (\mathbb{E}[\hat{\mathbf{\theta}}\_{train}] - \mathbf{\theta})^2 + Var(\hat{
 
 # Logistic Regression
 
-- We have: $\sigma(x) = \frac{1}{1 + \exp(-x)}$
+- We have: $\sigma(x) = \frac{1}{1 + \exp(-x)}$ and $\sigma'(x) =\sigma(x)(1 - \sigma(x))$
 
 - More generally, $\mathbf{x}$ is usually a vector in $m$ dimensions
     - $P(y=1|\mathbf{x})$ modelized by $\sigma(\mathbf{\theta}^T\mathbf{x})$ $= \frac{1}{1 + \exp(-\mathbf{\theta}^T\mathbf{x})}$</br>
@@ -359,7 +359,7 @@ $$J(\mathbf{\theta}) = -\frac{1}{n}\sum_{i=1}^{n}y_i\cdot\log(\sigma(\theta^T\ma
 
 # Logistic Regression
 
-On the one hand, Logistic Regression is not linear
+On the one hand, the logistic regression outputs non-linear predictions
 
 - When $\sigma(\theta^{T} x)$ is close to $0.5$, so $\theta^{T} x$ close to $0$,
 a **small increment** on $x$ leads to a **significant change in probability**
