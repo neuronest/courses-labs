@@ -286,7 +286,7 @@ $$
 .small60[
 - Problem: can suffer from **saturation** and make gradient-based learning difficult, meaning that it can become very flat and insensitive to small changes in its input
 
-- As a consequence, they are preferably used only as **output units**, mostly for binary classification tasks, in which the log of the cross-entropy loss used undoes the exp of these activations
+- As a consequence, they are preferably used only as **output units**, mostly for binary classification tasks, in which the log of the cross-entropy loss used undoes the exponential of these activations
 ]
 
 ---
@@ -336,9 +336,9 @@ $\gamma \Omega(\mathbf{\Theta}) = \gamma (||W^h||^2 + ||W^o||^2)$ is an example 
 # Binary classification network
 
 - We have for target:</br>
-  - $Y \in [0, 1]^n$, with $n$ the number of examples
+  - $Y \in \text{ } ${$0, 1$}$^n$, with $n$ the number of examples
 - Our assumption about the underlying distribution:
-  - $Y|(X=\mathbf{x}) \sim Bernoulli(b=f(\mathbf{x} ; \mathbf{\Theta}))$,</br> with $f$ the function constructed by our neural network, trained to estimate $b$
+  - $Y\_i|(\mathbf{X\_i} = \mathbf{x}) \sim Bernoulli(b=f(\mathbf{x} ; \mathbf{\Theta}))$,</br> with $f$ the function constructed by our neural network, trained to estimate $b$
 
 - A **sigmoid** output activation function is usually used to output a probability
 
@@ -349,9 +349,9 @@ $\gamma \Omega(\mathbf{\Theta}) = \gamma (||W^h||^2 + ||W^o||^2)$ is an example 
 # Multiclass classification network
 
 - We have for target:</br>
-  - $Y \in [0, K-1]^n$, with $n$ the number of examples
+  - $Y \in \text{ } ${$0, 1,... K-1$}$^n$, with $n$ the number of examples
 - Our assumption about the underlying distribution:
-  - $Y|(X=\mathbf{x}) \sim Multinoulli(\mathbf{p}=f(\mathbf{x} ; \Theta))$,</br> with $f$ the function constructed by our neural network, trained to estimate $\mathbf{p}$
+  - $Y\_i|(\mathbf{X\_i} = \mathbf{x}) \sim Multinoulli(\mathbf{p}=f(\mathbf{x} ; \Theta))$,</br> with $f$ the function constructed by our neural network, trained to estimate $\mathbf{p}$
 
 .small90[
 - The $Multinoulli$ distribution is a generalization of the $Bernoulli$ distribution, with a vector $\mathbf{p} \in [0, 1]^K$ as parameter and $\sum\_{i=1}^{K} \mathbf{p}_i = 1$
@@ -368,7 +368,7 @@ $\gamma \Omega(\mathbf{\Theta}) = \gamma (||W^h||^2 + ||W^o||^2)$ is an example 
 - We have for target:</br>
   - $Y \in \mathbb{R}^n$, with $n$ the number of examples
 - Our assumption about the underlying distribution:
-  - $Y|(X=\mathbf{x}) \sim \mathcal{N}(\mathbf{\mu}=f(\mathbf{x} ; \Theta), \sigma^2 \mathbf{I})$,</br> with $f$ the function constructed by our neural network, trained to estimate $\mu$
+  - $Y\_i|(\mathbf{X\_i} = \mathbf{x}) \sim \mathcal{N}(\mathbf{\mu}=f(\mathbf{x} ; \Theta), \sigma^2 \mathbf{I})$,</br> with $f$ the function constructed by our neural network, trained to estimate $\mu$
 
 - Usually we use an **identity** or a **ReLU** activation output function
 
@@ -626,7 +626,9 @@ Partial derivatives related to $\mathbf{W}^o$
 
 - Values $X\_{i,j}$ in dataset can play a role in weight updates
 
-  $\rightarrow$ ex: for Log Reg $\nabla\_{\theta\_j} J = -\frac{1}{n}\sum\_{i=1}^{n}{(y\_i - f\_{\theta}(X)\_i)X\_{i,j}}$
+
+  $\rightarrow$ example of gradient, with logistic regression:
+  $$\nabla\_{\theta\_j} J = -\frac{1}{n}\sum\_{i=1}^{n}{(y\_i - f\_{\theta}(X)\_i)X\_{i,j}}$$
 
   so $X\_{i,j}$ scale leads to greater or lower weight updates
 
