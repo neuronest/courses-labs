@@ -72,8 +72,17 @@ Another few examples
 
 - Instead, most Deep Learning frameworks implement in practice a related function: the cross-correlation
 
-- Discrete cross-correlation between two functions $f$ and $g$:
+.left-column50[
+<img src="images/cross_correlation_animation_1.gif" style="width: 200;margin-top: 0%" />
+]
+.right-column50[
+<img src="images/cross_correlation_animation_2.gif" style="width: 200;margin-top: 0%" />
+]
+---
 
+# The Convolution Operation
+
+- Discrete cross-correlation between two functions $f$ and $g$:
 $$
 (f \star g) (x) = \sum\_{b-a = x} f(a) . g(b) = \sum\_{a} f(a) . g(x + a)
 $$
