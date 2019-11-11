@@ -686,7 +686,6 @@ This residue, equal to $0$ or not, is learned through a convolutional block
 .right-column50.small70[
 - $a^{l+2} = g(z^{l+2} + a^{l})$; $g(x) = reLU(x)$
 - $a^{l+2} = g(W^{l+2} \cdot a^{l+1} + b^{l+2} + a^{l})$</br>
-&rarr; if $W^{l+2} = 0$ and $b^{l+2} = 0$ then $a^{l+2} = g(a^{l}) = a^{l}$
 - $W$ and $b$ are **not** set to $0$
 - Gradient issue is solved by propagating information forward and constructing an ensemble
 of shallow networks
