@@ -627,18 +627,21 @@ Partial derivatives related to $\mathbf{W}^o$
 - Values $X\_{i,j}$ in dataset can play a role in weight updates
 
 
-  $\rightarrow$ example of gradient, with logistic regression:
+example of gradient, with logistic regression:
   $$\nabla\_{\theta\_j} J = -\frac{1}{n}\sum\_{i=1}^{n}{(y\_i - f\_{\theta}(X)\_i)X\_{i,j}}$$
 
-  so $X\_{i,j}$ scale leads to greater or lower weight updates
+$\rightarrow$ $X\_{i,j}$ scale leads to greater or lower weight updates
 
 ---
 
 # Standardization
 
-- Rescale features so they have standard normal distribution properties: $\text{ mean} = 0 \text{ standard deviation} = 1$
+- Rescale features so they have standard normal distribution properties: <br>
+mean = 0 and standard deviation = 1
 
-- $z = \frac{x - {\mu}}{\sigma}\text{, }\mu = \frac{1}{n}\sum\_{i=1}^{n}{x\_i} \text{ and } \sigma = \sqrt{\frac{1}{n}\sum\_{i=1}^{n}{(x\_i - \mu)^2}}$
+$$X_{standardized} = \frac{X - {\mu}}{\sigma}$$
+
+$$\text{with } \mu = \frac{1}{n}\sum\_{i=1}^{n}{X\_i}, \sigma = \sqrt{\frac{1}{n}\sum\_{i=1}^{n}{(X\_i - \mu)^2}}$$
 
 - Preferred where distance measures between values matters as bigger gaps between values is still possible
 
@@ -659,7 +662,7 @@ but leads to small standard deviation and suppresses the effect of wanted outlie
 
 # Initialization
 
-- Initialization of matrix of parameters $W_i$
+- Initialization of matrix of parameters $W^i$
 
 - At point zero network $f(x)$ is a constant: no gradient, no learning
 
@@ -676,7 +679,7 @@ but leads to small standard deviation and suppresses the effect of wanted outlie
 
 # Initialization
 
-- Initialization of vectors of biases parameters $b_i$
+- Initialization of vectors of biases parameters $b^i$
 
 - Usually biases are initialized to some constant
 
@@ -732,7 +735,7 @@ the other layers, will remain the same
 
 - A central ML objective is generalization: how to make the algorithm perform well on unseen samples?
 
-- Srategies designed to lower test error even at expense of train error are refered to as regularization techniques
+- Strategies designed to lower test error even at expense of train error are refered to as regularization techniques
 
 - A few regularization techniques examples:
   - Putting extra constraints on the model parameter values (can be done
