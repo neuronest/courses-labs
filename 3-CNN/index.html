@@ -789,7 +789,7 @@ For each cell of the $S \times S$:
 ---
 
 # Mask-RCNN
-Detection + segmentation
+
 .center[
 <img src="images/mask_rcnn.png" style="width: 550px;margin-top: 5%;" />
 ]
@@ -803,7 +803,7 @@ Detection + segmentation
 
 - For a given image, it outputs bounding boxes, class and binary mask for each box
 .center[
-<img src="images/mask_rcnn_example.png" style="width: 450px;margin-top: 5%;" />
+<img src="images/mask_rcnn_example.png" style="width: 450px;" />
 ]
 ---
 
@@ -820,34 +820,6 @@ regions that should have an object in them
 region
   - It is used to predict a newly refined bounding box, the class and a $28\times28$
 mask that is next extended to fit the proposed region
----
-
-# Mask-RCNN - second stage
-
-- A set of anchors, boxes with predefined scales and positions in image, are used
-
-- For each anchor, the RPN predicts boxes and the presence of objects to exist or not
- in them
-
-- RPN coordinates predictions are relative to an anchor, so anchors are used the retrieve
-the input coordinates of a proposed region
----
-
-# Mask-RCNN - third stage
-
-- A proposed region by the RPN is mapped to a corresponding feature map region
-  - The perfect region that only involves the chosen pixels may not exist
-  - To correct this misalignement, ROIAlign uses bilinear interpolation
-
-- ROIAlign sets all sub feature map regions to the same size through max Pooling operations
-
-- The resulting output, usually of size $3\times3$ is passed to two heads
-
-- First head predicts the class and the refined bounding box
-
-- Second head predicts the $28\times28$ mask that will be extended back
- to the proposed region size
-
 
     </textarea>
     <style TYPE="text/css">
