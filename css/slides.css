@@ -97,6 +97,10 @@ td, th {
   visibility: hidden;
 }
 
+.big105 {
+  font-size: 105%;
+}
+
 .big110 {
   font-size: 110%;
 }
@@ -119,6 +123,10 @@ td, th {
 
 .small {
   font-size: 90%;
+}
+
+.small95 {
+  font-size: 95%;
 }
 
 .small90 {
@@ -178,6 +186,11 @@ td, th {
 
 a:visited {
   color: blue;
+}
+
+.left-column5 {
+  width: 5%;
+  float: left;
 }
 
 .left-column10 {
@@ -278,6 +291,7 @@ a:visited {
   width: 60%;
   float: right;
 }
+
 .right-column70 {
   width: 70%;
   float: right;
@@ -290,6 +304,11 @@ a:visited {
 
 .right-column90 {
   width: 90%;
+  float: right;
+}
+
+.right-column95 {
+  width: 95%;
   float: right;
 }
 
