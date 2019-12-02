@@ -202,8 +202,14 @@ a:visited {
   width: 20%;
   float: left;
 }
+
 .left-column30 {
   width: 30%;
+  float: left;
+}
+
+.left-column35 {
+  width: 35%;
   float: left;
 }
 
@@ -289,6 +295,11 @@ a:visited {
 
 .right-column60 {
   width: 60%;
+  float: right;
+}
+
+.right-column65 {
+  width: 65%;
   float: right;
 }
 

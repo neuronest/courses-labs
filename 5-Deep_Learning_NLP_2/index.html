@@ -23,10 +23,6 @@ class: center, middle
 # Deep Learning for Natural Language Processing - Part 2
 
 Guillaume Ligner - Côme Arvis
-
-.center[
-          <img src="images/ece_logo.png" style="width: 300px;" />
-]
 ---
 
 # Reminders on words embeddings: Skip Gram
@@ -757,6 +753,29 @@ CNN architecture example for NLP classification
 ]
 ---
 
+# The Transformer
+
+.left-column35[
+    <img src="images/transformer.png" style="width: 350px;margin-top: -5%;margin-left: -25%" />
+]
+
+.right-column65[
+    - Introduced in **Attention Is All You Need** paper (2017)
+- Key concepts:
+    - Still an **encoder-decoder** architecture
+    - **No recurrent cells** at all (use a positional encoding instead), thus can be heavily parallelized
+    - Use **self-attention mechanism** in addition to standard attention mechanism
+    - Long-range dependencies are easier to learn
+- Building block for state of the art NLP pretrained models in 2019, like BERT or GPT-2
+]
+---
+
+# The Transformer: applications
+
+.center[
+<img src="images/transformer_applications_code.jpg" style="width: 450px;" /><br/><br/>
+<small>Source from the french startup HuggingFace: https://huggingface.co/transformers</small>
+]
 
     </textarea>
     <style TYPE="text/css">
