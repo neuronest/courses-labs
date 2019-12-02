@@ -66,8 +66,8 @@ With $w_i$ being out input word in the vocabulary, e.g. $&ldquo;QUICK&rdquo;$, a
 
 --
 - Before doing the actual training, for each word we encounter in our training text, there is a probability that we will delete it from the whole corpus
-- The probability that we cut the word is related to the **word’s frequency**
-- We randomly removes words that are more frequent than some threshold $t \approx 10^{-5}$ with a probability of $p(w)$:
+- The probability that we remove the word is related to the **word frequency**
+- We randomly remove words that are more frequent than some threshold $t \approx 10^{-5}$ with a probability of $p_{drop}(w)$:
 
 $p_{drop}(w) = 1 - \sqrt{\frac{t}{f_w}}$, with $f_w$ the  word’s corpus frequency
 
@@ -402,7 +402,7 @@ The semantic proximity of the sentences makes more sense than if we had taken th
 - We actually need to select the **most pertinent** piece of information, rather than using all available information</br>
 --
 
-- It turns out that a attention model allows, for each new word, to focus on a part of the original text
+- It turns out that an attention model allows, for each new word, to focus on a part of the original text
 - The decoder will not be fed with a global context vector $c$ anymore, but with a **weighted combinaison** of **every hidden state** $h_i$ of the encoder
 
 ---
