@@ -8,6 +8,7 @@ Courses and labs will be added and updated in weeks, please be sure to pull freq
 - Week 2: [The fundamentals of Neural Networks](https://deep-learning-courses.github.io/courses_labs/2-Fundamentals_NNs/index.html)
 - Week 3: [Convolutional Neural Networks](https://deep-learning-courses.github.io/courses_labs/3-CNN/index.html)
 - Week 4: [Deep Learning for Natural Language Processing - Part 1](https://deep-learning-courses.github.io/courses_labs/4-Deep_Learning_NLP_1/index.html)
+- Week 5: [Deep Learning for Natural Language Processing - Part 2](https://deep-learning-courses.github.io/courses_labs/5-Deep_Learning_NLP_2/index.html)
 
 ### Lab requirements
 
