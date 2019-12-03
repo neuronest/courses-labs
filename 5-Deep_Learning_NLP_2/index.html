@@ -36,7 +36,7 @@ Guillaume Ligner - Côme Arvis
 ]
 --
 .right-column60[
-- Here we have:</br>$p(w_c | w_i) = softmax(X_i^\top W_h W_o)_c$</br>
+- Here we have:</br>$p(w_c | w_i) = softmax(W_o W_h X_i)_c$</br>
 With $w_i$ being out input word in the vocabulary, e.g. $&ldquo;QUICK&rdquo;$, and $w_c$ being our context word, e.g. $&ldquo;CAT&rdquo;$
 ]
 
@@ -74,12 +74,12 @@ $p_{drop}(w) = 1 - \sqrt{\frac{t}{f_w}}$, with $f_w$ the  word’s corpus freque
 ### Second problem: intractable softmax
 
 $$
-p(w_c | w_i) = softmax(X_i^\top W_h W_o)_c
-= \frac{(e^{X_i^\top W_h W_o})_c}{\sum \limits_j^{|V|} (e^{X_i^\top W_h W_o})_j}
+p(w_c | w_i) = softmax(W_o W_h X_i)_c
+= \frac{(e^{W_o W_h X_i})_c}{\sum \limits_j^{|V|} (e^{W_o W_h X_i})_j}
 $$
 
 .center[
-with $W_h \in \mathbb{R}^{|V| \times |E|}$ and $W_o \in \mathbb{R}^{|E| \times |V|}$
+with $W_h \in \mathbb{R}^{|E| \times |V|}$ and $W_o \in \mathbb{R}^{|V| \times |E|}$
 ]
 
 - It means that we have to sum over all the vocabulary for a single update
@@ -526,65 +526,6 @@ $
 ]
 
 ---
-
-# CNN for NLP
-
-### CNN followed by RNN
-.center[
-    <img src="images/image_captioning.gif" style="width: 500px;" />
-]
----
-
-# CNN for NLP
-
-### CNN followed by RNN
-.center[
-    <img src="images/image_captioning3.png" style="width: 360px;margin-top: -2%" />
-]
-.left-column50.small80[
-**Encoder**
-- The CNN can be thought of as an encoder
-- CNN has image as input and extracts the features
-- CNN's last state connected to the Decoder
-]
-.right-column50.small80[
-**Decoder**
-- The decoder is a RNN which does language modelling up to the word level
-- Decoder at first time step receives the encoded image from encoder and the START vector
-]
----
-
-# CNN for NLP
-
-### CNN followed by RNN
-.center[
-    <img src="images/image_captioning3.png" style="width: 360px;margin-top: -2%" />
-]
-.left-column50.small80[
-**Training**
-- Step$1$: $x_1$ = START vector and $y_1 = 1^{st}$ word
-- Step$2$: $x_2 = $ embedding of $1^{st}$ word and $y_2 = 2^{nd}$ word
-- Step$T$: $x_T = $ embedding of last word and <br/>$y_T = $ END token vector
-- Correct input given to decoder at every step
-]
-.right-column50.small80[
-**Testing**
-- Steps performed same way as in training
-- Predicted $y\_i$: argmax or sample from distribution $P(y\_i|x\_{i-1}, x\_{i-2},..., x\_{1})$
-- Predicted $y\_{i}$ mapped to its embedding and becomes input $x\_{i+1}$ for next timestep
-- Iterate over steps until END token generated
-]
----
-
-# CNN for NLP
-
-### The best of both worlds: automatic image captioning with attention mechanism
-
-.center[
-    <img src="images/image_captioning.png" style="width: 450px;" />
-]
-
----
 # CNN for NLP
 ### CNN directly applied to NLP
 **How ?**
@@ -619,7 +560,7 @@ $
 - Local invariance through pooling makes sense for many vision tasks
   - Not so much for NLP, we usually care about word position
 - Pixels close to each other likely to be connected to same concept
-  - Not so true for NLP, words expressing an idea can be seperated by many words
+  - Not so true for NLP, words expressing an idea can be separated by many words
 ---
 
 # CNN for NLP
@@ -630,7 +571,7 @@ $
 - Suits tasks for which the order of words is less important
    - The occurrence of some words or $n-$grams matters
    - Conv' and pooling lose info about local order of words
-- Compared to RNNs CNNs are very fast
+- Compared to RNNs, CNNs are very fast
   - Convolutions are well implemented and paralleled on GPUs
 - With a large vocabulary, very hard to represent more than $3-$grams
    - Google itself doesn't provide anymore than $5$ Word$-$Grams representations
@@ -750,6 +691,64 @@ CNN architecture example for NLP classification
 .left-column30.small70[
 - Use the vector of features
 - Compute softmax $P(y_i|input) \in [0,1]^V$
+]
+---
+
+# CNN as encoder for NLP
+
+### CNN followed by RNN
+.center[
+    <img src="images/image_captioning.gif" style="width: 500px;" />
+]
+---
+
+# CNN as encoder for NLP
+
+### CNN followed by RNN
+.center[
+    <img src="images/image_captioning3.png" style="width: 360px;margin-top: -2%" />
+]
+.left-column50.small80[
+**Encoder**
+- The CNN can be thought of as an encoder
+- CNN has image as input and extracts the features
+- CNN's last state connected to the Decoder
+]
+.right-column50.small80[
+**Decoder**
+- The decoder is a RNN which does language modelling up to the word level
+- Decoder at first time step receives the encoded image from encoder and the START vector
+]
+---
+
+# CNN as encoder for NLP
+
+### CNN followed by RNN
+.center[
+    <img src="images/image_captioning3.png" style="width: 360px;margin-top: -2%" />
+]
+.left-column50.small80[
+**Training**
+- Step$1$: $x_1$ = START vector and $y_1 = 1^{st}$ word
+- Step$2$: $x_2 = $ embedding of $1^{st}$ word and $y_2 = 2^{nd}$ word
+- Step$T$: $x_T = $ embedding of last word and <br/>$y_T = $ END token vector
+- Correct input given to decoder at every step
+]
+.right-column50.small80[
+**Testing**
+- Steps performed same way as in training
+- Predicted $y\_i$: argmax or sample from distribution $P(y\_i|x\_{i-1}, x\_{i-2},..., x\_{1})$
+- Predicted $y\_{i}$ mapped to its embedding and becomes input $x\_{i+1}$ for next timestep
+- Iterate over steps until END token generated
+]
+---
+
+# CNN as encoder for NLP
+
+### The best of both worlds: automatic image captioning with attention mechanism
+
+.center[
+    <img src="images/image_captioning.png" style="width: 450px;" />
 ]
 ---
 
