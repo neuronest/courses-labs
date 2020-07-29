@@ -1,6 +1,52 @@
 @import url(webfont-ubuntu-400-300-100.css);
 @import url(webfont-ubuntu-mono-400-700-400italic.css);
 
+div.my-header {
+    /*
+    border-top: 1px solid #ccc;
+    */
+    font-size: 10pt;
+	text-align: center;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 30px;
+	width: 100%;
+}
+
+div.my-footer {
+    /*
+    border-top: 1px solid #ccc;
+    */
+    font-size: 10pt;
+	text-align: center;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	height: 30px;
+	width: 100%;
+}
+
+div.my-footer p {
+    margin-top: 9px;
+    height: 50px;
+
+}
+
+div.my-footer img {
+	height: 30px;
+	bottom: 0px;
+	left: 0px;
+	position: fixed;
+}
+
+div.my-header img {
+	height: 40px;
+	top: 15px;
+	right: 15px;
+	position: fixed;
+}
+
 body {
   font-family: 'Ubuntu';
   font-weight: normal;
@@ -362,9 +408,3 @@ a:visited {
 .ghostwhite {
   color: ghostwhite;
 }
-
-
-
-
-
-
